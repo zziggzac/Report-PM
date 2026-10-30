@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -1712,17 +1712,24 @@
     .col-abnormal { width: 7%; text-align: center; }
     .col-note { width: 13.5%; text-align: center; }
 
-    .sec-title {
+    .sec-title,
+    .maintenance-table td.sec-title {
       font-weight: bold !important;
       background-color: transparent;
       padding-left: 5px !important;
       color: #000000 !important;
     }
 
-    .sub-item {
+    .sub-item,
+    .maintenance-table td.sub-item {
       font-weight: normal !important;
-      padding-left: 25px !important;
+      padding-left: 20px !important;
       color: #000000 !important;
+    }
+
+    .maintenance-table td.sub-item[style*="padding-left: 28px"],
+    .sub-item[style*="padding-left: 28px"] {
+      padding-left: 35px !important;
     }
 
     .cell-check {
@@ -2820,7 +2827,7 @@
       font-family: 'TH Sarabun New', 'THSarabunNew', sans-serif !important;
       font-size: 14px !important;
       line-height: 1.15 !important;
-      padding: 1.5px 4px !important;
+      padding: 1.5px 4px;
       vertical-align: middle !important;
       border: 1px solid #000000 !important;
       color: #000000 !important;
@@ -2833,8 +2840,12 @@
     }
     .sec-title,
     .sec-title *,
+    .maintenance-table td.sec-title,
+    .maintenance-table td.sec-title *,
     body.pdf-export-mode .sec-title,
-    body.pdf-export-mode .sec-title * {
+    body.pdf-export-mode .sec-title *,
+    body.pdf-export-mode .maintenance-table td.sec-title,
+    body.pdf-export-mode .maintenance-table td.sec-title * {
       font-family: 'TH Sarabun New', 'THSarabunNew', sans-serif !important;
       font-size: 14px !important;
       line-height: 1.15 !important;
@@ -2843,24 +2854,31 @@
       color: #000000 !important;
     }
     .sub-item,
-    body.pdf-export-mode .sub-item {
+    .maintenance-table td.sub-item,
+    body.pdf-export-mode .sub-item,
+    body.pdf-export-mode .maintenance-table td.sub-item {
       font-family: 'TH Sarabun New', 'THSarabunNew', sans-serif !important;
       font-size: 14px !important;
       line-height: 1.15 !important;
       font-weight: normal !important;
-      padding-left: 25px !important;
+      padding-left: 20px !important;
       color: #000000 !important;
     }
     .sub-item *,
-    body.pdf-export-mode .sub-item * {
+    .maintenance-table td.sub-item *,
+    body.pdf-export-mode .sub-item *,
+    body.pdf-export-mode .maintenance-table td.sub-item * {
       font-family: 'TH Sarabun New', 'THSarabunNew', sans-serif !important;
       font-size: 14px !important;
       line-height: 1.15 !important;
       font-weight: normal !important;
       color: #000000 !important;
     }
-
-      color: #000000 !important;
+    .maintenance-table td.sub-item[style*="padding-left: 28px"],
+    body.pdf-export-mode .maintenance-table td.sub-item[style*="padding-left: 28px"],
+    .sub-item[style*="padding-left: 28px"],
+    body.pdf-export-mode .sub-item[style*="padding-left: 28px"] {
+      padding-left: 35px !important;
     }
     .page input[type=text],
     .maintenance-table input[type=text],
