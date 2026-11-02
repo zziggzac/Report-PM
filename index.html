@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('pm_app_theme') || 'light';
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch(e) {}
+    })();
+  </script>
   <title>ระบบรายงานการบำรุงรักษาเชิงป้องกัน (PM Smart Form) - ทุกประเภทรายงาน</title>
   <style>
     /* Authentic TH Sarabun New Fonts from Font/ folder */
@@ -216,6 +226,50 @@
       color: #ffffff;
       box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
       font-weight: 700;
+    }
+
+    /* Theme Switcher: Compact, Sleek Segmented Pill Control */
+    .sf-theme-switch {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      align-items: center;
+      margin-left: 4px;
+    }
+
+    .sf-theme-btn {
+      border: none;
+      background: transparent;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+
+    .sf-theme-btn:hover {
+      color: #ffffff;
+    }
+
+    .sf-theme-btn.active {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      box-shadow: 0 1px 4px rgba(2, 132, 199, 0.4);
+      font-weight: 700;
+    }
+
+    body.dark-mode .sf-theme-btn.active {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      box-shadow: 0 1px 4px rgba(99, 102, 241, 0.4);
     }
 
     /* Buttons: Balanced, Harmonious, Soothing Colors */
@@ -2274,6 +2328,17 @@
         text-align: center !important;
         justify-content: center !important;
       }
+      .sf-theme-switch {
+        width: 100% !important;
+        display: flex !important;
+        margin: 4px 0 0 0 !important;
+      }
+      .sf-theme-btn {
+        flex: 1 !important;
+        justify-content: center !important;
+        font-size: 13.5px !important;
+        padding: 5px 8px !important;
+      }
 
       /* Horizontally Scrollable Report Tabs (Smooth Thumb Swipe) */
       .sf-report-tabs {
@@ -3769,6 +3834,333 @@
       color: #0f172a !important;
       font-weight: 700 !important;
     }
+
+    /* ==========================================================================
+       DARK MODE THEME SYSTEM
+       Strictly applies only to the Smart Form workspace, cards, inputs, and modals.
+       The official A4 document paper (.page) and PDF export (.pdf-export-mode)
+       remain 100% pure white paper (#ffffff) with black text at all times.
+       ========================================================================== */
+    html.dark-mode,
+    body.dark-mode {
+      background-color: #0b1120 !important;
+      color: #e2e8f0;
+    }
+
+    /* Desk background in A4 preview mode */
+    body.dark-mode:not(.pdf-export-mode) #a4-preview-wrapper {
+      background-color: #070b14 !important;
+    }
+
+    /* Smart Form main wrapper */
+    body.dark-mode:not(.pdf-export-mode) #smart-form-wrapper {
+      background-color: transparent;
+    }
+
+    /* Smart Form Header */
+    body.dark-mode:not(.pdf-export-mode) .sf-header {
+      background: rgba(11, 17, 32, 0.95);
+      border-bottom: 1px solid #1e293b;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Cards & Containers */
+    body.dark-mode:not(.pdf-export-mode) .sf-card {
+      background: #151e32;
+      border: 1px solid #28354f;
+      color: #f1f5f9;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-card-header {
+      background: linear-gradient(to right, #1a253e, #131c30);
+      border-bottom: 1px solid #28354f;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-card-title {
+      color: #f8fafc;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-label {
+      color: #cbd5e1;
+    }
+
+    /* Form Controls */
+    body.dark-mode:not(.pdf-export-mode) .sf-input,
+    body.dark-mode:not(.pdf-export-mode) .sf-select,
+    body.dark-mode:not(.pdf-export-mode) .sf-note-input,
+    body.dark-mode:not(.pdf-export-mode) .sf-inline-input,
+    body.dark-mode:not(.pdf-export-mode) .sf-info-input {
+      background: #090e1a !important;
+      color: #f8fafc !important;
+      border: 1.5px solid #334155 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-input:focus,
+    body.dark-mode:not(.pdf-export-mode) .sf-select:focus,
+    body.dark-mode:not(.pdf-export-mode) .sf-note-input:focus,
+    body.dark-mode:not(.pdf-export-mode) .sf-inline-input:focus,
+    body.dark-mode:not(.pdf-export-mode) .sf-info-input:focus {
+      background: #0d1527 !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25) !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-input::placeholder,
+    body.dark-mode:not(.pdf-export-mode) .sf-note-input::placeholder {
+      color: #64748b;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-input:disabled,
+    body.dark-mode:not(.pdf-export-mode) .sf-select:disabled {
+      background: #1e293b !important;
+      color: #64748b !important;
+      border-color: #334155 !important;
+    }
+
+    /* Chips */
+    body.dark-mode:not(.pdf-export-mode) .sf-round-chip {
+      background: #1e293b;
+      border-color: #334155;
+      color: #cbd5e1;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-round-chip:hover,
+    body.dark-mode:not(.pdf-export-mode) .sf-round-chip.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+
+    /* Station Banner */
+    body.dark-mode:not(.pdf-export-mode) .sf-station-info-card {
+      background: #0f1c34;
+      border: 1px solid #1d4ed8;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-info-label {
+      color: #38bdf8;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-info-val {
+      color: #f8fafc;
+    }
+
+    /* Filter Bar */
+    body.dark-mode:not(.pdf-export-mode) .sf-filter-bar {
+      background: #151e32;
+      border-color: #28354f;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-filter-pill {
+      background: #090e1a;
+      border-color: #334155;
+      color: #94a3b8;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-filter-pill:hover {
+      color: #f8fafc;
+      border-color: #475569;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-filter-pill.active {
+      background: #38bdf8;
+      border-color: #38bdf8;
+      color: #090e1a;
+      font-weight: 700;
+    }
+
+    /* Section Block in Checklist */
+    body.dark-mode:not(.pdf-export-mode) .sf-sec-block {
+      background: #151e32;
+      border-color: #28354f;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-sec-header {
+      background: #121929;
+      border-bottom-color: #28354f;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-sec-title-text {
+      color: #60a5fa;
+    }
+
+    /* Checklist Row Items */
+    body.dark-mode:not(.pdf-export-mode) .sf-item-row {
+      background: #151e32;
+      border-bottom-color: #1f2b42;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-item-row:hover {
+      background-color: #1c2842;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-item-left {
+      color: #f1f5f9;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-item-row.has-measure {
+      background-color: #282010 !important;
+      border-left: 4px solid #f59e0b !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-item-row.status-abnormal {
+      background-color: #341416 !important;
+      border-left: 4px solid #ef4444 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-chk-pill {
+      background: #090e1a;
+      border-color: #334155;
+      color: #cbd5e1;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-chk-pill.checked {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-status-group {
+      background: #090e1a;
+      border-color: #334155;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-status-btn {
+      color: #94a3b8;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-status-btn:first-child {
+      border-right-color: #334155;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-status-btn.normal.active {
+      background: #16a34a !important;
+      color: #ffffff !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-status-btn.abnormal.active {
+      background: #dc2626 !important;
+      color: #ffffff !important;
+    }
+
+    /* Photo Cards */
+    body.dark-mode:not(.pdf-export-mode) .sf-photo-card {
+      background: #151e32;
+      border-color: #28354f;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-photo-card-head {
+      background: #121929;
+      border-bottom-color: #28354f;
+      color: #cbd5e1;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-photo-dropzone {
+      background: #090e1a;
+      border-bottom-color: #28354f;
+      color: #64748b;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-photo-dropzone:hover {
+      background: #101827;
+      color: #94a3b8;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .sf-photo-caption-input {
+      background: #090e1a;
+      color: #f8fafc;
+      border-color: #334155;
+    }
+
+    /* Bottom Bar */
+    body.dark-mode:not(.pdf-export-mode) .sf-bottom-bar {
+      background: rgba(11, 17, 32, 0.96);
+      border-top: 1px solid #1e293b;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Modals in Dark Mode */
+    body.dark-mode:not(.pdf-export-mode) .station-modal-card,
+    body.dark-mode:not(.pdf-export-mode) .drive-modal-card,
+    body.dark-mode:not(.pdf-export-mode) .sf-uni-card,
+    body.dark-mode:not(.pdf-export-mode) .sf-tpl-auth-card {
+      background: #151e32;
+      border-color: #28354f;
+      color: #f1f5f9;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .station-modal-header,
+    body.dark-mode:not(.pdf-export-mode) .drive-viewer-header,
+    body.dark-mode:not(.pdf-export-mode) .sf-uni-header {
+      background: #0f172a;
+      border-bottom-color: #28354f;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .drive-viewer-header div {
+      color: #f8fafc !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .station-modal-search,
+    body.dark-mode:not(.pdf-export-mode) .drive-filter-search,
+    body.dark-mode:not(.pdf-export-mode) .drive-filter-select {
+      background: #090e1a !important;
+      color: #f8fafc !important;
+      border-color: #334155 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .drive-table th {
+      background: #0f172a !important;
+      color: #94a3b8 !important;
+      border-bottom: 2px solid #28354f !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .drive-table td {
+      border-bottom: 1px solid #1f2b42 !important;
+      color: #f1f5f9 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .drive-table tr:hover td {
+      background: #1c2842 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .station-item {
+      background: #090e1a;
+      border-color: #28354f;
+      color: #f1f5f9;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .station-item:hover {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .station-chip {
+      background: #1e293b;
+      border-color: #334155;
+      color: #cbd5e1;
+    }
+
+    /* PURE WHITE DOCUMENT PAPER PROTECTION (100% IMMUNITY) */
+    body.dark-mode .page,
+    body.dark-mode .page *,
+    body.dark-mode #a4-preview-wrapper .page,
+    body.dark-mode #a4-preview-wrapper .page *,
+    body.pdf-export-mode,
+    body.pdf-export-mode * {
+      /* Intentionally unstyled by dark-mode */
+    }
+
+    @media print {
+      html, body, body.dark-mode {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .page, .page * {
+        background-color: transparent;
+      }
+    }
   </style>
 </head>
 <body>
@@ -3814,6 +4206,15 @@
           <button type="button" id="btn-open-tpl-edit" class="sf-btn sf-btn-tpl-edit" onclick="onClickUnifiedSettingsBtn()" title="ตั้งค่าระบบ (ตั้งค่าข้อมูล และ ตั้งค่า Drive)">
             ⚙️ ตั้งค่า
           </button>
+
+          <div class="sf-theme-switch" title="เลือกธีมการแสดงผล (โหมดสว่าง / โหมดมืด)">
+            <button type="button" id="btn-theme-light" class="sf-theme-btn active" onclick="setAppTheme('light')">
+              ☀️ โหมดสว่าง
+            </button>
+            <button type="button" id="btn-theme-dark" class="sf-theme-btn" onclick="setAppTheme('dark')">
+              🌙 โหมดมืด
+            </button>
+          </div>
         </div>
       </div>
 
@@ -4065,6 +4466,9 @@
         </button>
         <button type="button" id="sf-bottom-toggle-view" class="sf-btn" style="background: #334155; padding: 7px 14px;" onclick="toggleViewMode()">
           📄 สลับแสดงแบบพิมพ์เอกสารฉบับจริง
+        </button>
+        <button type="button" id="sf-bottom-theme-toggle" class="sf-btn" style="background: #334155; padding: 7px 14px;" onclick="toggleAppTheme()" title="สลับโหมดสว่าง / โหมดมืด">
+          🌙 โหมดมืด
         </button>
         <button type="button" class="sf-btn sf-btn-drive" style="padding: 7px 16px; font-size: 15px;" onclick="uploadReportToGoogleDrive()" title="บันทึกและส่งรายงานขึ้น Google Drive (แยกโฟลเดอร์ตาม ครั้งที่ และ จังหวัด อัตโนมัติ)">
           ☁️ บันทึกลงคลาวด์
@@ -7038,14 +7442,11 @@
       <div class="drive-viewer-header">
         <div style="display: flex; align-items: center; gap: 10px;">
           <span style="font-size: 26px;">📁</span>
-          <div>
-            <div style="font-size: 19px; font-weight: 700; color: #0f172a;">รายงาน PM บน Google Drive</div>
-            <div style="font-size: 13.5px; color: #64748b;" id="drive-header-sub">โฟลเดอร์อัตโนมัติ: ครั้งที่ &gt; จังหวัด &gt; ไฟล์ PDF</div>
-          </div>
+          <div style="font-size: 19px; font-weight: 700; color: #0f172a;">รายงานผลการบำรุงรักษา (Google Drive)</div>
         </div>
         <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
           <a id="drive-folder-link" href="https://drive.google.com/drive/folders/1diLmmVPuClBDo7XRACqV4ff7VQJvKiVw" target="_blank" class="drive-act-btn" style="background: #eff6ff; color: #1d4ed8; border: 1.5px solid #93c5fd; text-decoration: none; padding: 7px 16px; font-size: 17px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; border-radius: 9px; line-height: 1.2; box-shadow: 0 1px 3px rgba(37, 99, 235, 0.1);" title="เปิดโฟลเดอร์หลัก รายงานเข้าบำรุงรักษา(PM) บน Google Drive">
-            📂 เปิด Drive
+            📁 เปิดโฟลเดอร์
           </a>
           <button type="button" class="drive-act-btn" onclick="onClickUnifiedSettingsBtn()" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; padding: 7px 16px; font-size: 17px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; border-radius: 9px; cursor: pointer; line-height: 1.2; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);" title="ตั้งค่าระบบ (ตั้งค่าข้อมูล และ ตั้งค่า Drive)">
             ⚙️ ตั้งค่า
@@ -7061,7 +7462,7 @@
           
           <!-- Dropdown เลือกประเภทสถานี (ตามชื่อในรูปที่ 2) พร้อมนับจำนวน -->
           <select id="drive-filter-station-type" class="drive-filter-select" onchange="filterDriveReports()" style="font-weight: 600; color: #0f172a; min-width: 210px; border-color: #93c5fd;" title="เลือกประเภทสถานี (ตามรูปที่ 2)">
-            <option value="">🏢 ทุกประเภทสถานี (ทั้งหมด)</option>
+            <option value="">ประเภทสถานีทั้งหมด</option>
             <option value="ag">🏢 Analog Gateway</option>
             <option value="bs">📡 Base Station</option>
             <option value="ms">📻 สถานีวิทยุลูกข่าย</option>
@@ -7072,11 +7473,11 @@
 
           <!-- Dropdown เลือกชื่อสถานี -->
           <select id="drive-filter-station" class="drive-filter-select" onchange="filterDriveReports()" style="max-width: 170px;" title="เลือกชื่อสถานี">
-            <option value="">ทุกชื่อสถานี</option>
+            <option value="">สถานีทั้งหมด</option>
           </select>
 
           <select id="drive-filter-round" class="drive-filter-select" onchange="onDriveRoundChange()" style="border: 2px solid #3b82f6; border-radius: 8px; font-weight: 700; color: #1e40af; padding: 7px 12px; background: #ffffff;" title="เลือกครั้งที่ (รอบการบำรุงรักษา PM)">
-            <option value="">ทุกรอบ</option>
+            <option value="">ครั้งที่บำรุงรักษาทั้งหมด</option>
             <option value="ครั้งที่ 1">ครั้งที่ 1 (17 สถานี)</option>
             <option value="ครั้งที่ 2">ครั้งที่ 2 (198 สถานี)</option>
             <option value="ครั้งที่ 3">ครั้งที่ 3 (17 สถานี)</option>
@@ -7089,10 +7490,10 @@
             <option value="ครั้งที่ 10">ครั้งที่ 10 (198 สถานี)</option>
           </select>
           <select id="drive-filter-province" class="drive-filter-select" onchange="onDriveProvinceChange()" style="border: 1.5px solid #059669; border-radius: 8px; font-weight: 600; color: #065f46; padding: 7px 12px; background: #ffffff;" title="เลือกจังหวัด">
-            <option value="">ทุกจังหวัด</option>
+            <option value="">จังหวัดทั้งหมด</option>
           </select>
           <button type="button" class="drive-act-btn" onclick="fetchDriveReports()" style="background: #2563eb; color: #ffffff; padding: 7px 16px; font-size: 17px; border: none; font-weight: 700; border-radius: 9px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; line-height: 1.2; box-shadow: 0 1px 3px rgba(37, 99, 235, 0.2);" title="โหลดข้อมูลรายงานใหม่จาก Google Drive">
-            🔄 รีเฟรช
+            🔄 โหลดใหม่
           </button>
         </div>
 
@@ -9375,6 +9776,42 @@
 
     function toggleViewMode() {
       setViewMode(currentViewMode === 'smart' ? 'a4' : 'smart');
+    }
+
+    // Switch between Light Mode and Dark Mode
+    function setAppTheme(theme) {
+      const isDark = (theme === 'dark');
+      const root = document.documentElement;
+      const body = document.body;
+      const btnLight = document.getElementById('btn-theme-light');
+      const btnDark = document.getElementById('btn-theme-dark');
+      const btnBottom = document.getElementById('sf-bottom-theme-toggle');
+
+      if (isDark) {
+        root.classList.add('dark-mode');
+        if (body) body.classList.add('dark-mode');
+        if (btnLight) btnLight.classList.remove('active');
+        if (btnDark) btnDark.classList.add('active');
+        if (btnBottom) btnBottom.innerHTML = '☀️ โหมดสว่าง';
+        try { localStorage.setItem('pm_app_theme', 'dark'); } catch(e) {}
+      } else {
+        root.classList.remove('dark-mode');
+        if (body) body.classList.remove('dark-mode');
+        if (btnLight) btnLight.classList.add('active');
+        if (btnDark) btnDark.classList.remove('active');
+        if (btnBottom) btnBottom.innerHTML = '🌙 โหมดมืด';
+        try { localStorage.setItem('pm_app_theme', 'light'); } catch(e) {}
+      }
+    }
+
+    function toggleAppTheme() {
+      const current = localStorage.getItem('pm_app_theme') || 'light';
+      setAppTheme(current === 'dark' ? 'light' : 'dark');
+    }
+
+    function initAppTheme() {
+      const savedTheme = localStorage.getItem('pm_app_theme') || 'light';
+      setAppTheme(savedTheme);
     }
 
     // Switch Report Type (ag, bs, ms, pole60, pole9, cc)
@@ -11829,7 +12266,8 @@
           }
           if (updatedEl) {
             const now = new Date();
-            updatedEl.innerText = 'อัปเดตล่าสุด: ' + now.toLocaleTimeString('th-TH');
+            const timeStr = now.toLocaleTimeString('th-TH').replace(/\s*น\.?$/, '');
+            updatedEl.innerText = 'อัปเดตล่าสุด: ' + timeStr + ' น.';
           }
 
           populateDriveFilterDropdowns(window._driveReportsList);
@@ -11972,7 +12410,7 @@
 
       // 1. เติมตัวเลือก "ครั้งที่" ตามรูปที่ 2 (Option Text: ครั้งที่ X (Y สถานี))
       if (roundSelect) {
-        let roundOpts = `<option value="" ${!curRound ? 'selected' : ''}>ทุกรอบ</option>`;
+        let roundOpts = `<option value="" ${!curRound ? 'selected' : ''}>ครั้งที่บำรุงรักษาทั้งหมด</option>`;
         PM_ROUND_CONFIG.rounds.forEach(r => {
           const isSel = (curRound === r.name || curRound === String(r.round));
           roundOpts += `<option value="${r.name}" ${isSel ? 'selected' : ''}>${r.name} (${r.total} สถานี)</option>`;
@@ -12032,7 +12470,7 @@
             }
           });
 
-          provHtml = `<option value="">ทุกจังหวัด (บันทึกแล้ว ${totalRecordedInRound} / ${roundInfo.total} สถานี)</option>`;
+          provHtml = `<option value="">จังหวัดทั้งหมด (บันทึกแล้ว ${totalRecordedInRound} / ${roundInfo.total} สถานี)</option>`;
           provKeys.forEach(p => {
             const target = provMap[p] || 0;
             const rec = provRecorded[p] || 0;
@@ -12073,7 +12511,7 @@
             }
           });
 
-          provHtml = `<option value="">ทุกจังหวัด (บันทึกแล้ว ${totalAll} / 198 สถานี)</option>`;
+          provHtml = `<option value="">จังหวัดทั้งหมด (บันทึกแล้ว ${totalAll} / 198 สถานี)</option>`;
           allProvs.forEach(item => {
             const rec = provRecordedAll[item.name] || 0;
             const isSel = (preserveProv && curProv === item.name);
@@ -12136,7 +12574,7 @@
         }
       });
 
-      let stHtml = '<option value="">ทุกชื่อสถานี</option>';
+      let stHtml = '<option value="">สถานีทั้งหมด</option>';
       const seen = new Set();
       targetStations.forEach(s => {
         const sName = s.name.trim();
@@ -12299,17 +12737,18 @@
       // 4. แสดงสถานะและแถบความคืบหน้า (บันทึกแล้ว / ทั้งหมด)
       const countEl = document.getElementById('drive-records-count');
       if (countEl) {
-        let statText = `พบ <b>${filtered.length}</b> รายการ`;
+        const recCountLabel = (filtered.length === list.length)
+          ? `รายการทั้งหมด <b>${filtered.length}</b> รายการ`
+          : `พบ <b>${filtered.length}</b> รายการ (จากรายการทั้งหมด ${list.length} รายการ)`;
+        let statText = recCountLabel;
         if (roundInfo) {
           const percent = targetTotal > 0 ? Math.min(100, Math.round((recordedPmStations / targetTotal) * 100)) : 0;
           const provTag = fProv ? ` (จังหวัด${fProv})` : '';
-          statText = `<span style="font-size: 14px; font-weight: 600; color: #334155;">พบ <b>${filtered.length}</b> รายการ</span>
+          statText = `<span style="font-size: 14px; font-weight: 600; color: #334155;">${recCountLabel}</span>
             <span style="display: inline-flex; align-items: center; gap: 6px; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; padding: 4px 14px; border-radius: 9999px; font-weight: 700; font-size: 13.5px; margin-left: 10px;">
               📊 ${roundInfo.name}${provTag}: บันทึกแล้ว <b style="font-size: 15px; color: #065f46;">${recordedPmStations}</b> / <b style="font-size: 15px; color: #065f46;">${targetTotal}</b> สถานี
               <span style="background: #059669; color: #ffffff; padding: 2px 8px; border-radius: 9999px; font-size: 12px; margin-left: 4px;">${percent}%</span>
             </span>`;
-        } else {
-          statText = `พบ <b>${filtered.length}</b> รายการ (จากทั้งหมด ${list.length} รายการ)`;
         }
         countEl.innerHTML = statText;
       }
@@ -12394,7 +12833,7 @@
         }
         const folderUrl = r.provinceFolderUrl || r.roundFolderUrl;
         if (folderUrl) {
-          actions += `<a href="${folderUrl}" target="_blank" class="drive-act-btn" style="background: #eff6ff; color: #1d4ed8; text-decoration: none;" title="เปิดโฟลเดอร์ใน Google Drive">📁 โฟลเดอร์</a>`;
+          actions += `<a href="${folderUrl}" target="_blank" class="drive-act-btn" style="background: #eff6ff; color: #1d4ed8; text-decoration: none;" title="เปิดโฟลเดอร์ใน Google Drive">📁 เปิดโฟลเดอร์</a>`;
         }
         const fileIdEsc = (r.fileId || '').replace(/'/g, "\\'");
         const fileNameEsc = (r.fileName || '').replace(/'/g, "\\'");
@@ -14105,6 +14544,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      initAppTheme();
       pmInitTemplateSystem();
       const urlParams = new URLSearchParams(window.location.search);
       const initialType = urlParams.get('type') || 'ag';
