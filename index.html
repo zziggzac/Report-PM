@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -1449,7 +1449,7 @@
     .date-input {
       border: none !important;
       border-bottom: none !important;
-      font-weight: 600 !important;
+      font-weight: bold !important;
       color: #000000 !important;
     }
 
@@ -1513,7 +1513,7 @@
 
     .station-select-p1 {
       font-size: 14px;
-      font-weight: 600 !important;
+      font-weight: bold !important;
       min-width: 195px;
       color: #000000 !important;
     }
@@ -1605,7 +1605,7 @@
 
     .p1-station-val {
       flex: 1;
-      font-weight: 600 !important;
+      font-weight: bold !important;
       color: #000000 !important;
     }
 
@@ -3032,6 +3032,19 @@
       font-family: 'TH Sarabun New', 'THSarabunNew', sans-serif !important;
       font-size: 14px !important;
     }
+    .p1-station-box .p1-station-val,
+    .p1-station-box .p1-station-val *,
+    .p1-station-box select,
+    .p1-station-box input,
+    .p1-station-box .station-select-p1,
+    .p1-station-box .station-search-input,
+    .p1-station-box .date-input,
+    .p1-station-box .pdf-temp-span,
+    body.pdf-export-mode .p1-station-box .pdf-temp-span,
+    body.pdf-export-mode .p1-station-box .p1-station-val,
+    body.pdf-export-mode .p1-station-box .p1-station-val * {
+      font-weight: bold !important;
+    }
     .photo-table {
       height: auto !important;
       width: 100% !important;
@@ -4140,6 +4153,92 @@
       background: #1e293b;
       border-color: #334155;
       color: #cbd5e1;
+    }
+
+
+    /* Drive Viewer & Filter Bar in Dark Mode */
+    body.dark-mode:not(.pdf-export-mode) .drive-filter-bar {
+      background: #111a2e !important;
+      border: 1px solid #1f2b42 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .drive-cat-pill {
+      background: #151f32 !important;
+      border-color: #28354f !important;
+      color: #cbd5e1 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .drive-cat-pill:hover {
+      background: #1e293b !important;
+      border-color: #3b82f6 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .drive-cat-pill.active {
+      background: #2563eb !important;
+      border-color: #1d4ed8 !important;
+      color: #ffffff !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .drive-cat-pill .cat-count-badge {
+      background: #090e1a !important;
+      color: #94a3b8 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .drive-cat-pill.active .cat-count-badge {
+      background: #ffffff !important;
+      color: #1d4ed8 !important;
+    }
+
+    /* Template Editor & Settings Hub in Dark Mode */
+    body.dark-mode:not(.pdf-export-mode) .pm-tpl-modal-card {
+      background: #0f172a !important;
+      color: #f1f5f9 !important;
+      border: 1px solid #334155 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .pm-settings-hub-card {
+      background: #1e293b !important;
+      border-color: #334155 !important;
+      color: #f1f5f9 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .pm-settings-hub-card.pm-hub-card-data:hover {
+      background: #232220 !important;
+      border-color: #f59e0b !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .pm-settings-hub-card.pm-hub-card-drive:hover {
+      background: #172642 !important;
+      border-color: #3b82f6 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .pm-settings-hub-title {
+      color: #f8fafc !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .pm-settings-hub-sub,
+    body.dark-mode:not(.pdf-export-mode) .pm-settings-hub-desc {
+      color: #94a3b8 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .pm-ed-section-box {
+      background: #1e293b !important;
+      border-color: #334155 !important;
+      color: #f1f5f9 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .pm-ed-section-heading {
+      color: #f8fafc !important;
+      border-bottom-color: #334155 !important;
+    }
+
+    body.dark-mode:not(.pdf-export-mode) .pm-ed-input,
+    body.dark-mode:not(.pdf-export-mode) .pm-ed-col-input,
+    body.dark-mode:not(.pdf-export-mode) .pm-ed-row-input,
+    body.dark-mode:not(.pdf-export-mode) .pm-ed-sec-input {
+      background: #090e1a !important;
+      color: #f1f5f9 !important;
+      border-color: #334155 !important;
     }
 
     /* PURE WHITE DOCUMENT PAPER PROTECTION (100% IMMUNITY) */
@@ -11570,7 +11669,8 @@
         span.className = 'pdf-temp-span black-text nowrap';
         span.style.fontFamily = "'TH Sarabun New', sans-serif";
         const isStation = sel.classList.contains('station-select-p1') || sel.id === 'station-select-p1';
-        span.style.fontWeight = isStation ? '600' : 'normal';
+        span.style.fontWeight = isStation ? 'bold' : 'normal';
+        if (isStation) span.style.setProperty('font-weight', 'bold', 'important');
         span.style.color = '#000000';
         span.style.fontSize = '14px';
         span.style.whiteSpace = 'nowrap';
@@ -11593,7 +11693,8 @@
           span.style.border = 'none';
           span.style.borderBottom = 'none';
           span.style.display = 'inline-block';
-          span.style.fontWeight = '600';
+          span.style.fontWeight = 'bold';
+          span.style.setProperty('font-weight', 'bold', 'important');
           span.style.fontSize = '14px';
           if (isP1Round) {
             span.style.display = 'inline';
@@ -11649,7 +11750,8 @@
         span.className = 'pdf-temp-span black-text nowrap';
         span.style.fontFamily = "'TH Sarabun New', sans-serif";
         span.style.fontSize = '14px';
-        span.style.fontWeight = '600';
+        span.style.fontWeight = 'bold';
+        span.style.setProperty('font-weight', 'bold', 'important');
         span.style.whiteSpace = 'nowrap';
         span.innerText = valText;
         searchContainer.style.setProperty('display', 'none', 'important');
@@ -12942,6 +13044,46 @@
         document.activeElement.blur();
       }
 
+      // ตรวจสอบความถูกต้องของข้อมูลก่อนบันทึก (Pre-Save Validation & Warning)
+      if (!currentSelectedStation) {
+        alert('⚠️ กรุณาเลือกสถานีก่อนบันทึกรายงาน');
+        const stInput = document.getElementById('station-search-input') || document.getElementById('sf-station-name') || document.getElementById('station-select-p1');
+        if (stInput) {
+          stInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          stInput.focus();
+          stInput.style.outline = '3px solid #ef4444';
+          setTimeout(() => { stInput.style.outline = ''; }, 3000);
+        }
+        return;
+      }
+
+      const opVal = (document.getElementById('sf-operator-select') && document.getElementById('sf-operator-select').value) ||
+                    (document.getElementById('operator-select-1') && document.getElementById('operator-select-1').value) || '';
+      if (!opVal) {
+        alert('⚠️ กรุณาระบุชื่อเจ้าหน้าที่ผู้เข้าดำเนินการก่อนบันทึกรายงาน');
+        const opEl = document.getElementById('sf-operator-select') || document.getElementById('operator-select-1');
+        if (opEl) {
+          opEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          opEl.focus();
+          opEl.style.outline = '3px solid #ef4444';
+          setTimeout(() => { opEl.style.outline = ''; }, 3000);
+        }
+        return;
+      }
+
+      // ตรวจสอบความคืบหน้าการกรอกรายงาน หากยังไม่ครบ 100% ให้เตือนผู้ใช้
+      const pctEl = document.getElementById('stat-percent');
+      const currentPct = pctEl ? parseInt(pctEl.innerText.replace('%', ''), 10) : 100;
+      if (!isNaN(currentPct) && currentPct < 100) {
+        const proceed = confirm('⚠️ รายงานนี้ยังกรอกข้อมูลไม่ครบ 100% (ความคืบหน้าปัจจุบัน ' + currentPct + '%)\n\nคุณต้องการบันทึกขึ้น Google Drive ต่อหรือไม่?');
+        if (!proceed) {
+          showToast('ยกเลิกการบันทึกรายงาน');
+          return;
+        }
+      }
+
+
+
       // ดึงข้อมูลและประเภทรายงานที่กำลังบันทึก
       let roundVal = (document.getElementById('sf-round-input') && document.getElementById('sf-round-input').value.trim()) || '1';
       let provVal = (document.getElementById('sf-province-input') && document.getElementById('sf-province-input').value.trim()) || '';
@@ -13148,7 +13290,22 @@
       } catch (err) {
         console.error('Google Drive Upload Error:', err);
         if (loadingModal) loadingModal.classList.remove('active');
-        alert('เกิดข้อผิดพลาดในการบันทึกขึ้น Google Drive: ' + (err.message || err));
+        const retryDownload = confirm(
+          '❌ บันทึกขึ้น Google Drive ไม่สำเร็จ (' + (err.message || 'การเชื่อมต่อขัดข้อง') + ')\n\n' +
+          '💡 คุณต้องการดาวน์โหลดไฟล์ PDF เก็บไว้ในเครื่องนี้แทนก่อนหรือไม่? (เพื่อป้องกันข้อมูลสูญหายขณะอยู่นอกสถานที่)'
+        );
+        if (retryDownload) {
+          if (window._lastPdfBlob) {
+            const a = document.createElement('a');
+            a.href = window._lastPdfUrl || URL.createObjectURL(window._lastPdfBlob);
+            a.download = window._lastPdfFilename || 'รายงานการบำรุงรักษา.pdf';
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => a.remove(), 1000);
+          } else {
+            savePdfToDevice();
+          }
+        }
       } finally {
         restoreDomAfterPdf();
         window.scrollTo(prevScrollX, prevScrollY);
@@ -14544,6 +14701,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      try { localStorage.removeItem('pm_last_inspector'); } catch (e) {}
       initAppTheme();
       pmInitTemplateSystem();
       const urlParams = new URLSearchParams(window.location.search);
